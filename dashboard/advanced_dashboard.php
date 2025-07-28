@@ -101,6 +101,7 @@ $messages_stats = $messageHistory->getStatistics($_SESSION['user_id']);
     <title><?php echo __('dashboard', 'dashboard'); ?> - <?php echo getSiteName(); ?></title>
     <link rel="icon" href="<?php echo FAVICON_PATH; ?>">
     <link rel="manifest" href="/public/manifest.json">
+    <?php include 'pwa_init.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
