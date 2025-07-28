@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - ClientManager Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+        <div class="mb-6">
+            <i class="fas fa-wifi text-gray-300 text-6xl mb-4"></i>
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Você está offline</h1>
+            <p class="text-gray-600">
+                Não foi possível conectar à internet. Verifique sua conexão e tente novamente.
+            </p>
+        </div>
+        
+        <div class="space-y-4">
+            <button onclick="window.location.reload()" 
+                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-150">
+                <i class="fas fa-sync-alt mr-2"></i>
+                Tentar Novamente
+            </button>
+            
+            <button onclick="history.back()" 
+                    class="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition duration-150">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Voltar
+            </button>
+        </div>
+        
+        <div class="mt-8 text-sm text-gray-500">
+            <p>Algumas funcionalidades podem estar disponíveis offline.</p>
+        </div>
+    </div>
+
+    <script>
+        // Check for connection and reload when back online
+        window.addEventListener('online', function() {
+            window.location.reload();
+        });
+        
+        // Auto-retry connection every 30 seconds
+        setInterval(function() {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
