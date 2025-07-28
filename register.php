@@ -109,6 +109,7 @@ $plan = $stmt->fetch(PDO::FETCH_ASSOC) ?: ['name' => 'Básico', 'price' => 0, 'i
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo getSiteName(); ?> - Registro</title>
     <link rel="icon" href="<?php echo FAVICON_PATH; ?>">
+    <link rel="manifest" href="/public/manifest.json">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="dashboard/css/dark_mode.css" rel="stylesheet">
 </head>

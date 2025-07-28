@@ -1,0 +1,229 @@
+/* PWA Specific Styles */
+
+/* Estilos para quando o app está rodando como PWA */
+html.pwa-mode {
+    /* Ajustes específicos para PWA */
+}
+
+/* Botão de instalação PWA */
+#pwa-install-btn {
+    animation: pulse 2s infinite;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Notificação de atualização */
+#update-notification {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Estilos para iOS PWA */
+@media (display-mode: standalone) {
+    /* Ajustar padding para compensar a barra de status do iOS */
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    /* Ocultar elementos específicos do browser */
+    .browser-only {
+        display: none !important;
+    }
+    
+    /* Ajustar header para PWA */
+    .pwa-header {
+        padding-top: calc(env(safe-area-inset-top) + 1rem);
+    }
+}
+
+/* Splash screen personalizada */
+.pwa-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: white;
+}
+
+.pwa-splash-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2rem;
+    animation: bounceIn 1s ease-out;
+}
+
+.pwa-splash-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.pwa-splash-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Indicador de status de conexão */
+.connection-status {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.connection-status.online {
+    background-color: #10B981;
+    color: white;
+}
+
+.connection-status.offline {
+    background-color: #EF4444;
+    color: white;
+}
+
+/* Estilos para modo offline */
+.offline-mode {
+    filter: grayscale(0.3);
+}
+
+.offline-banner {
+    background-color: #FEF3C7;
+    color: #92400E;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    border-bottom: 1px solid #F59E0B;
+}
+
+/* Animações de carregamento para PWA */
+.pwa-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilos responsivos para PWA */
+@media (max-width: 768px) {
+    .pwa-container {
+        padding: 1rem;
+    }
+    
+    .pwa-card {
+        margin: 0.5rem 0;
+        border-radius: 12px;
+    }
+    
+    .pwa-button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+}
+
+/* Estilos para dark mode em PWA */
+@media (prefers-color-scheme: dark) {
+    .pwa-splash {
+        background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+    }
+    
+    .connection-status.online {
+        background-color: #059669;
+    }
+    
+    .connection-status.offline {
+        background-color: #DC2626;
+    }
+}
+
+/* Estilos para tablets em modo landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .pwa-sidebar {
+        width: 200px;
+    }
+    
+    .pwa-main-content {
+        margin-left: 200px;
+    }
+}
+
+/* Estilos para impressão (quando necessário) */
+@media print {
+    #pwa-install-btn,
+    #update-notification,
+    .connection-status {
+        display: none !important;
+    }
+}
